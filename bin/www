@@ -1,12 +1,18 @@
 #!/usr/bin/env node
-
+'use strict';
 /**
  * Module dependencies.
  */
-
+var { readFileSync } = require('fs');
 var app = require('../app');
 var debug = require('debug')('webrtc-app:server');
-var http = require('http');
+var https = require('https');
+
+/**
+ * Environment Variables
+ */
+
+const { LOCALHOST_SSL_KEY, LOCALHOST_SSL_CERT } = process.env;
 
 /**
  * Get port from environment and store in Express.
@@ -18,8 +24,12 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
+ const config = {
+   key: readFileSync(LOCALHOST_SSL_KEY),
+   cert: readFileSync(LOCALHOST_SSL_CERT)
+ };
 
-var server = http.createServer(app);
+ var server = https.createServer(config, app);
 
 /**
  * Listen on provided port, on all network interfaces.
