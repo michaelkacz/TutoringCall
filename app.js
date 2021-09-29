@@ -18,4 +18,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//terminal logs connection with socket.io when established
+io.on('connection', function(socket) {
+  console.log('Connection to socket.io server');
+});
+
 module.exports = { app, io };
