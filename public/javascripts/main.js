@@ -25,8 +25,15 @@ async function requestUserMedia(constraints) {
 }
 
 //Socket server events and callbacks
-const button = document.querySelector('#join-call');
-const sc = io({ autoConnect: false });
+//namespace to use hash in window
+const namespace = window.location.hash.substr(1);
+
+//pass in namespace for particular hash
+const sc = io(`/${namespace}`, { autoConnect: false });
+
+const button = document
+  .querySelector('#join-call');
+
 //Opens socket.io connection when 'join-call' button is clicked
 button.addEventListener('click', function() {
   sc.open();
@@ -34,4 +41,8 @@ button.addEventListener('click', function() {
 
 sc.on('connect', function() {
   console.log('Socket.io connection established');
+});
+
+sc.on('connected peer', function() {
+  console.log('Peer has connected');
 });
