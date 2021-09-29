@@ -3,7 +3,14 @@
 //variable '$self' is used for things on users side of call
 //starts by setting audio to off and video to on
 const $self = {
+  rtcConfig: null;
   constraints: { audio: false, video: true }
+};
+
+//$peer object is used as the second person in syscal
+//Sets up a connection between two people ($self and $peer)
+const $peer {
+  connection: new RTCPeerConnection($self.rtcConfig);
 };
 
 requestUserMedia($self.constraints);
