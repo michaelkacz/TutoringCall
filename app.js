@@ -18,9 +18,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//create unique namespace that opens with '/' and has 6 digits 1-9
+const namespaces = io.of(/^\/[0-9]{6}$/);
 //terminal logs connection with socket.io when established
-io.on('connection', function(socket) {
-  console.log('Connection to socket.io server');
+namespaces.on('connection', function(socket) {
+  const namespace = socket.nsp;
+  socket.broadcast.emit('connected peer');
+
 });
 
 module.exports = { app, io };
