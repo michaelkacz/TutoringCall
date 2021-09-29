@@ -3,10 +3,10 @@
 /**
  * Module dependencies.
  */
-var { readFileSync } = require('fs');
-var app = require('../app');
-var debug = require('debug')('webrtc-app:server');
-var https = require('https');
+const { readFileSync } = require('fs');
+const { app, io } = require('../app');
+const debug = require('debug')('webrtc-app:server');
+const https = require('https');
 
 /**
  * Environment Variables
@@ -35,6 +35,8 @@ app.set('port', port);
  * Listen on provided port, on all network interfaces.
  */
 
+//Attach socket.io instance to HTTPS server
+server.attach(io);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
