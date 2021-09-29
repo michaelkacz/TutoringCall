@@ -11,6 +11,24 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 /* Begin site styles below */
 
+
+html {
+  font-family: Poppins, "Hoefler Text", Georgia, "Times New Roman", Times, Roman, serif;
+  border: 0.25em solid white;
+  background: #DC143C;
+  /*color: crimson*/
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+p {
+  padding-bottom: 0.5em;
+  color: white;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
