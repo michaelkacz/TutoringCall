@@ -25,7 +25,13 @@ async function requestUserMedia(constraints) {
 }
 
 //Socket server events and callbacks
-const sc = io();
+const button = document.querySelector('#join-call');
+const sc = io({ autoConnect: false });
+//Opens socket.io connection when 'join-call' button is clicked
+button.addEventListener('click', function() {
+  sc.open();
+});
+
 sc.on('connect', function() {
   console.log('Socket.io connection established');
 });
