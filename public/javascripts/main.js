@@ -18,7 +18,7 @@ requestUserMedia($self.constraints);
 //requests media usage from user in pop up
 //finding video instance and setting video object to $self stream
 async function requestUserMedia(constraints) {
-  const video = document.querySelector('$self');
+  const video = document.querySelector('#self');
   $self.stream = await navigator.mediaDevices
     .getUserMedia(constraints);
   video.srcObject = $self.stream;
