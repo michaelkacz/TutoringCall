@@ -31,6 +31,8 @@ const namespace = window.location.hash.substr(1);
 //pass in namespace for particular hash
 const sc = io(`/${namespace}`, { autoConnect: false });
 
+registerScEvents();
+
 const button = document
   .querySelector('#join-call');
 
@@ -39,10 +41,28 @@ button.addEventListener('click', function() {
   sc.open();
 });
 
-sc.on('connect', function() {
-  console.log('Socket.io connection established');
-});
+//Calling a reference to the function that gets executed
+//Connecting and disconnecting peers
+function registerScEvents() {
+  sc.on('connect', handleScConnect);
+  sc.on('connected peer', handleScConnectedPeer);
+  sc.on('signal', handleScSignal);
+  sc.on('disconnected peer', handleScDisconnectedPeer);
+}
 
-sc.on('connected peer', function() {
-  console.log('Peer has connected');
-});
+//Calling functions to log connections and disconnections in console
+async function handleScSignal() {
+  console.log('Heard signal event');
+}
+
+function handleScConnect() {
+  console.log('Socket.io connection established');
+}
+
+function handleScConnectedPeer() {
+  console.log('Peer connected event');
+}
+
+function handleScDisconnectedPeer() {
+  console.log('Peer disconnected event');
+}
