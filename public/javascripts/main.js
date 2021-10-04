@@ -25,7 +25,7 @@ async function requestUserMedia(constraints) {
   const video = document.querySelector('#self');
   $self.stream = await navigator.mediaDevices
     .getUserMedia(constraints);
-  video.srcObject = $self.stream;
+  displayStream('#self', $self.stream);
 }
 
 //Socket server events and callbacks
@@ -76,13 +76,43 @@ async function handleRtcNegotiation() {
   $self.isMakingoffer = false;
 }
 
+//start to chat log JS
+/*
+const chatbutton = document
+  .querySelector('#chat-form');
+
+button.addEventListener('click', sendChat);
+
+function sendChat() {
+  sendchat.onclick = openForm();
+}
+
+function endChat() {
+  closebutton.onclick = exitForm();
+}
+
+*/
+
+//emits signal for candidate
+function handleButton(e) {
+  sc.emit('signal', { candidate:
+    candidate });
+}
+
+//sets up video stream to display when joined call
+function displayStream(selector, stream) {
+  const video = document.querySelector(selector);
+  video.srcObject = stream;
+}
+
 function handleIceCandidate({ candidate }) {
   sc.emit('signal', { candidate:
     candidate })
 }
 
-function handleRtcTrack() {
-
+//function for streaming peer on the RTC track
+function handleRtcTrack({ track, streams: [stream] }) {
+  displayStream('#peer', stream);
 }
 
 //Calling a reference to the function that gets executed
