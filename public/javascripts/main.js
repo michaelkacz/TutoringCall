@@ -117,8 +117,29 @@ async function handleScSignal({ description, candidate }) {
       return;
     }
 
+    //remote answer pending is true if description type is 'answer'
+    $self.isSettingRemoteAnswerPending = description.type === 'answer';
+    await $peer.connection.setRemoteDescription(description);
+
+    $self.isSettingRemoteAnswerPending = false;
+
+    //if description type is an offer an answer must be set
+    //re-run setLocalDescription and it will generate an answer
+    if (description.type === 'offer') {
+      await $peer.connection.setLocalDescription();
+      sc.emit('signal',
+        { description:
+          $peer.connection.localDescription });
+    }
   } else if (candidate) {
-  console.log('Received ICE candidate:', candidate);
+    console.log('Received ICE candidate:', candidate);
+    try {
+      await $peer.connection.addIceCandidate(candidate);
+    } catch(e) {
+      if (!$self.isIgnoringOffer) {
+        console.error('Unable to add ICE candidate for peer', e);
+      }
+    }
   }
 }
 
