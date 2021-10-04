@@ -36,6 +36,10 @@ video.self {
   /*padding-right: 4em;*/
 }
 
+#self {
+  width: 50%;
+}
+
 button.join {
   background-color: #000000;
   color: #FFFFFF;
