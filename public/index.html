@@ -16,11 +16,21 @@
 </header>
   <p id="welcome">Welcome to the IIT Tutoring Center!</p>
     <button class="join" type="button" id="join-call">Join Call</button>
-  <video class="self" id="self" autoplay muted playsinline>
+  <video class="self" id="self" autoplay muted playsinline> </video>
+  <video class="peer" id="peer" autoplay muted playsinline> </video>
 
-  </video>
+<div class="chat" id="chat-form">
+ <form id="chat-form" action="#null" class="chat-box">
+   <h1>Tutor Chat</h1>
+   <label for="msg"><b>Message:</b></label>
+   <textarea name="message" required > </textarea>
+   <button class="sendbutton" type="submit" id="send-chat">Send</button>
+   <button class="closebutton" type="button" id="close-chat">Close</button>
+ </form>
+</div>
 
 <script src="/socket.io/socket.io.js"></script>
+<script src="https://webrtchacks.github.io/adapter/adapter-latest.js"></script>
 <script src="javascripts/main.js"></script>
 </body>
 </html>
