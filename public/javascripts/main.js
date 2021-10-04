@@ -61,8 +61,11 @@ function registerRtcEvents(peer) {
   peer.connection.ontrack = handleRtcTrack;
 }
 
-function handleRtcNegotiation() {
+async function handleRtcNegotiation() {
   console.log('RTC negotiation needed');
+  await $peer.connection.setLocalDescription();
+  sc.emit('signal', { description:
+    $peer.connection.localDescription })
 }
 
 function handleIceCandidate() {
@@ -83,8 +86,9 @@ function registerScEvents() {
 }
 
 //Calling functions to log connections and disconnections in console
-async function handleScSignal() {
+async function handleScSignal({ description, candidate }) {
   console.log('Heard signal event');
+  console.log('SDP signal:', description);
 }
 
 function handleScConnect() {
