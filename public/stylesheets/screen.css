@@ -36,7 +36,7 @@ video.self {
   /*padding-right: 4em;*/
 }
 
-button {
+button.join {
   background-color: #000000;
   color: #FFFFFF;
   float: left;
@@ -46,6 +46,26 @@ button {
   width: 150px;
   position: absolute;
   left: 20em;
+}
+
+form.chat-box {
+ float: right;
+ max-width: 20em;
+ padding: 5px;
+ background-color: white;
+}
+
+.chat-box .sendbutton {
+ color: white;
+ background-color: green;
+ margin-bottom: 1em;
+ padding: 1em 1.25em;
+ width: 100%;
+}
+
+/* Add a red background color to the cancel button */
+.chat-box .closebutton {
+ background-color: red;
 }
 
 img.logo {
