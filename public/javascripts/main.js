@@ -4,7 +4,11 @@
 //starts by setting audio to off and video to on
 const $self = {
   rtcConfig: null,
-  constraints: { audio: false, video: true }
+  constraints: { audio: false, video: true },
+  isPolite: false,
+  isMakingoffer: false,
+  isIgnoringOffer: false,
+  isSettingRemoteAnswerPending: false
 };
 
 //$peer object is used as the second person in syscal
@@ -63,13 +67,18 @@ function registerRtcEvents(peer) {
 
 async function handleRtcNegotiation() {
   console.log('RTC negotiation needed');
+  $self.isMakingoffer = true;
   await $peer.connection.setLocalDescription();
+  //emit SDP signal
   sc.emit('signal', { description:
     $peer.connection.localDescription })
+  //As soon as offer is sent, it will be set back to false
+  $self.isMakingoffer = false;
 }
 
-function handleIceCandidate() {
-
+function handleIceCandidate({ candidate }) {
+  sc.emit('signal', { candidate:
+    candidate })
 }
 
 function handleRtcTrack() {
@@ -88,7 +97,11 @@ function registerScEvents() {
 //Calling functions to log connections and disconnections in console
 async function handleScSignal({ description, candidate }) {
   console.log('Heard signal event');
-  console.log('SDP signal:', description);
+  if (description) {
+    console.log('SDP signal:', description);
+  } else if (candidate) {
+  console.log('Received ICE candidate:', candidate);  
+  }
 }
 
 function handleScConnect() {
@@ -97,6 +110,7 @@ function handleScConnect() {
 
 function handleScConnectedPeer() {
   console.log('Peer connected event');
+  $self.isPolite = true;
 }
 
 function handleScDisconnectedPeer() {
