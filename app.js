@@ -25,6 +25,16 @@ namespaces.on('connection', function(socket) {
   const namespace = socket.nsp;
   socket.broadcast.emit('connected peer');
 
+//Browser sends a signal with data to the namespace
+socket.on('signal', function(signal) {
+  socket.broadcast.emit('signal', signal);
+})
+
+//Namespace emits disconnected peer
+socket.on('disconnect', function() {
+  namespace.emit('disconnected peer');
+})
+
 });
 
 module.exports = { app, io };
