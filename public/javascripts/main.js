@@ -99,8 +99,26 @@ async function handleScSignal({ description, candidate }) {
   console.log('Heard signal event');
   if (description) {
     console.log('SDP signal:', description);
+    //getting ready to accept or reject an offer
+    const readyForOffer =
+    //self must not be making an offer to accept
+        !$self.isMakingOffer &&
+    //signaling state has to be stable or setting is set to remote
+    //answer pending
+        ($peer.connection.signalingState === 'stable'
+          || $self.isSettingRemoteAnswerPending);
+    //locally created variable seeing if the description type is an offer
+    //and if it isnt ready for an offer
+    const offerCollision = description.type === 'offer' && !readyForOffer;
+    //only the impolite peer will ignore offers
+    $self.isIgnoringOffer = !$self.isPolite && offerCollision;
+    //if self is ignoring offers sent drop return and exit function
+    if ($self.isIgnoringOffer) {
+      return;
+    }
+
   } else if (candidate) {
-  console.log('Received ICE candidate:', candidate);  
+  console.log('Received ICE candidate:', candidate);
   }
 }
 
