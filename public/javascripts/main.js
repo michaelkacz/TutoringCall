@@ -37,9 +37,41 @@ const button = document
   .querySelector('#join-call');
 
 //Opens socket.io connection when 'join-call' button is clicked
-button.addEventListener('click', function() {
+button.addEventListener('click', joinCall);
+
+//join and leave call callbacks
+function joinCall() {
   sc.open();
-});
+  //registers events after connecting to server
+  registerRtcEvents($peer);
+  establishCallFeatures($peer);
+}
+function leaveCall() {
+  sc.close();
+}
+
+//
+function establishCallFeatures(peer) {
+  peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
+}
+
+function registerRtcEvents(peer) {
+  peer.connection.onnegotiationneeded = handleRtcNegotiation;
+  peer.connection.onicecandidate = handleIceCandidate;
+  peer.connection.ontrack = handleRtcTrack;
+}
+
+function handleRtcNegotiation() {
+  console.log('RTC negotiation needed');
+}
+
+function handleIceCandidate() {
+
+}
+
+function handleRtcTrack() {
+
+}
 
 //Calling a reference to the function that gets executed
 //Connecting and disconnecting peers
