@@ -39,6 +39,16 @@ registerScEvents();
 const button = document
   .querySelector('#join-call');
 
+  const mutebutton = document.querySelector('#mutebutton');
+    mutebutton.onclick = function (){
+    if ($self.audio === false) {
+           $self.audio = true;
+      }
+    else {
+            $self.audio = false;
+  }};
+
+
 //Opens socket.io connection when 'join-call' button is clicked
 button.addEventListener('click', handleButton);
 
