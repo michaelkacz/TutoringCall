@@ -46,6 +46,18 @@ video.self {
   display: flex;
 }
 
+button.leave {
+  background-color: #000000;
+  color: #FFFFFF;
+  float: left;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: auto;
+  width: 150px;
+  position: absolute;
+  left: 20em;
+}
+
 button.join {
   background-color: #000000;
   color: #FFFFFF;
