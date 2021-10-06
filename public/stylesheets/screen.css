@@ -70,6 +70,15 @@ button.join {
   left: 20em;
 }
 
+button.mutebutton {
+  display: grid;
+  margin: auto;
+  height: 3.5em;;
+  width: 3.5em;;
+  border-radius: 50%;
+  align-content: center;
+}
+
 form.chat-box {
  float: right;
  max-width: 20em;
