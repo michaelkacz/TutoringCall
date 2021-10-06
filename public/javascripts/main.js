@@ -22,7 +22,6 @@ requestUserMedia($self.constraints);
 //requests media usage from user in pop up
 //finding video instance and setting video object to $self stream
 async function requestUserMedia(constraints) {
-  const video = document.querySelector('#self');
   $self.stream = await navigator.mediaDevices
     .getUserMedia(constraints);
   displayStream('#self', $self.stream);
@@ -41,7 +40,26 @@ const button = document
   .querySelector('#join-call');
 
 //Opens socket.io connection when 'join-call' button is clicked
-button.addEventListener('click', joinCall);
+button.addEventListener('click', handleButton);
+
+function displayStream(selector, stream) {
+  const video = document.querySelector(selector);
+  video.srcObject = stream;
+}
+
+//if call is joined, button changes to leave call
+function handleButton(e) {
+  const button = e.target;
+  if (button.className === 'join') {
+    button.className = 'leave';
+    button.innerText = 'Leave Call';
+    joinCall();
+  } else {
+    button.className = 'join';
+    button.innerText = 'Join Call';
+    leaveCall();
+  }
+}
 
 //join and leave call callbacks
 function joinCall() {
@@ -51,9 +69,11 @@ function joinCall() {
   establishCallFeatures($peer);
 }
 function leaveCall() {
+  $peer.connection.close();
+  $peer.connection = new RTCPeerConnection($self.rtcConfig);
+  displayStream('#peer', null);
   sc.close();
 }
-
 //
 function establishCallFeatures(peer) {
   peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
@@ -94,11 +114,6 @@ function endChat() {
 */
 
 //emits signal for candidate
-function handleButton(e) {
-  sc.emit('signal', { candidate:
-    candidate });
-}
-
 //sets up video stream to display when joined call
 function displayStream(selector, stream) {
   const video = document.querySelector(selector);
