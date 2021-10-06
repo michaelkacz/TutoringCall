@@ -38,6 +38,12 @@ video.self {
 
 #self {
   width: 50%;
+  border: 0.5em solid white;
+}
+
+#peer {
+  width: 20%;
+  display: flex;
 }
 
 button.join {
