@@ -199,6 +199,11 @@ function handleScConnectedPeer() {
 
 function handleScDisconnectedPeer() {
   console.log('Peer disconnected event');
+  displayStream('#peer', null);
+  $peer.connection.close();
+  $peer.connection = new RTCPeerConnection($self.rtcConfig);
+  registerRtcEvents($peer);
+  establishCallFeatures($peer);
 }
 
 //function to generate random namespace
