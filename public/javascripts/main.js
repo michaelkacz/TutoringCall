@@ -4,7 +4,8 @@
 //starts by setting audio to off and video to on
 const $self = {
   rtcConfig: null,
-  constraints: { audio: false, video: true },
+  audio: false,
+  constraints: { video: true },
   isPolite: false,
   isMakingoffer: false,
   isIgnoringOffer: false,
@@ -41,12 +42,14 @@ const button = document
 
   const mutebutton = document.querySelector('#mutebutton');
     mutebutton.onclick = function (){
-    if ($self.audio === true) {
-           $self.audio = false;
-           console.log('Audio turned off!');
+    if ($self.audio === false) {
+           $self.audio = true;
+           console.log('Audio turned On!');
+           mutebutton.innerText = 'Mute';
       }
     else {
-            $self.audio = true;
+            $self.audio = false;
+            mutebutton.innerText = 'Unmute';
   }};
 
   const videooff = document.querySelector('#videooff');
