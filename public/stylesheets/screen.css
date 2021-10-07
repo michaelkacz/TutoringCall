@@ -31,50 +31,48 @@ h1 {
   text-align: center;
 }
 
-video.self {
-  margin: auto;
-  /*padding-right: 4em;*/
-}
-
 #self {
-  width: 50%;
-  border: 0.5em solid white;
+  width: 20%;
+  bottom: 10px;
+  right: 10px;
+  border: 0.25em solid white;
+  margin: auto;
 }
 
 #peer {
-  width: 20%;
-  display: flex;
+  display: block;
+  max-width: 100%;
+  border: 0.25em solid black;
+  margin: auto;
 }
 
 button.leave {
   background-color: #000000;
   color: #FFFFFF;
-  float: left;
+  font-weight: bold;
+  border: 0;
+  line-height: 1;
   padding: 10px;
   border-radius: 10px;
-  margin-bottom: auto;
-  width: 150px;
-  position: absolute;
-  left: 20em;
+  width: 120px;
 }
 
 button.join {
   background-color: #000000;
   color: #FFFFFF;
-  float: left;
+  font-weight: bold;
+  border: 0;
+  line-height: 1;
   padding: 10px;
   border-radius: 10px;
-  margin-bottom: auto;
-  width: 150px;
-  position: absolute;
-  left: 20em;
+  width: 120px;
 }
 
 button.mutebutton {
   display: grid;
   margin: auto;
-  height: 3.5em;;
-  width: 3.5em;;
+  height: 5em;
+  width: 5em;
   border-radius: 50%;
   align-content: center;
 }
@@ -82,8 +80,8 @@ button.mutebutton {
 button.videooff {
   display: grid;
   margin: auto;
-  height: 3.5em;;
-  width: 3.5em;;
+  height: 5em;
+  width: 5em;
   border-radius: 50%;
   align-content: center;
 }
