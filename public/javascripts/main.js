@@ -41,13 +41,25 @@ const button = document
 
   const mutebutton = document.querySelector('#mutebutton');
     mutebutton.onclick = function (){
-    if ($self.audio === false) {
-           $self.audio = true;
+    if ($self.audio === true) {
+           $self.audio = false;
+           console.log('Audio turned off!');
       }
     else {
-            $self.audio = false;
+            $self.audio = true;
   }};
 
+  const videooff = document.querySelector('#videooff');
+    videooff.onclick = function (){
+    if (displayStream('#self') === true) {
+          displayStream('#self', null);
+           console.log('Video turned off!');
+           button.innerText = 'Video On';
+      }
+    else {
+            displayStream('#self', true);
+            button.innerText = 'Video Off';
+  }};
 
 //Opens socket.io connection when 'join-call' button is clicked
 button.addEventListener('click', handleButton);
