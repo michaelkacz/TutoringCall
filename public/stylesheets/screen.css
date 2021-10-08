@@ -91,6 +91,7 @@ form.chat-box {
  max-width: 20em;
  padding: 5px;
  background-color: white;
+ margin-top: -22.5em;
 }
 
 .chat-box .sendbutton {

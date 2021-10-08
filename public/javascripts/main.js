@@ -5,7 +5,7 @@
 const $self = {
   rtcConfig: null,
   audio: false,
-  constraints: { video: true },
+  constraints: { audio: false, video: true },
   isPolite: false,
   isMakingoffer: false,
   isIgnoringOffer: false,
@@ -140,10 +140,6 @@ function endChat() {
 
 //emits signal for candidate
 //sets up video stream to display when joined call
-function displayStream(selector, stream) {
-  const video = document.querySelector(selector);
-  video.srcObject = stream;
-}
 
 function handleIceCandidate({ candidate }) {
   sc.emit('signal', { candidate:
