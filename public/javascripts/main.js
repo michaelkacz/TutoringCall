@@ -40,7 +40,7 @@ registerScEvents();
 const button = document
   .querySelector('#join-call');
 
-  const mutebutton = document.querySelector('#mutebutton');
+  const mute = document.querySelector('#mutebutton');
     mutebutton.onclick = function (){
     if ($self.audio === false) {
            $self.audio = true;
@@ -49,19 +49,8 @@ const button = document
       }
     else {
             $self.audio = false;
+            console.log('Audio turned Off!');
             mutebutton.innerText = 'Unmute';
-  }};
-
-  const videooff = document.querySelector('#videooff');
-    videooff.onclick = function (){
-    if (displayStream('#self') === true) {
-          displayStream('#self', null);
-           console.log('Video turned off!');
-           button.innerText = 'Video On';
-      }
-    else {
-            displayStream('#self', true);
-            button.innerText = 'Video Off';
   }};
 
 //Opens socket.io connection when 'join-call' button is clicked
@@ -85,6 +74,24 @@ function handleButton(e) {
     leaveCall();
   }
 }
+
+const selfvideo = document.querySelector('#selfvideo');
+
+  selfvideo.onclick = function (){
+    const vid = document.getElementById("self");
+  if ($self.constraints.video === true) {
+         $self.constraints.video = false;
+         vid.pause();
+         console.log('Video turned off!');
+         selfvideo.innerText = 'Video On';
+    }
+  else if ($self.constraints.video === false) {
+          $self.constraints.video = true;
+          vid.play();
+          console.log('Video turned On!');
+          selfvideo.innerText = 'Video Off';
+
+}};
 
 //join and leave call callbacks
 function joinCall() {
