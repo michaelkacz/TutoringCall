@@ -32,6 +32,7 @@ h1 {
 }
 
 #self {
+  visibility: visible;
   width: 20%;
   bottom: 10px;
   right: 10px;
@@ -77,7 +78,7 @@ button.mutebutton {
   align-content: center;
 }
 
-button.videooff {
+button.selfvideo {
   display: grid;
   margin: auto;
   height: 5em;
