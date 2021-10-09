@@ -93,6 +93,20 @@ const selfvideo = document.querySelector('#selfvideo');
 
 }};
 
+chat.onclick = function (){
+const form = document.getElementsByTagName('form');
+  if (form.hasAttribute("hidden")) {
+       form.removeAttribute("hidden");
+       console.log('Chat Closed!');
+       selfvideo.innerText = 'Close Chat';
+  }
+else {
+        form.setAttribute("hidden")
+        console.log('Chat Opened!!');
+        selfvideo.innerText = 'Open Chat';
+
+}};
+
 //join and leave call callbacks
 function joinCall() {
   sc.open();
