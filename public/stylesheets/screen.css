@@ -86,12 +86,29 @@ button.selfvideo {
   align-content: center;
 }
 
+button.chat {
+  display: grid;
+  margin: auto;
+  height: 5em;
+  width: 5em;
+  border-radius: 50%;
+  align-content: center;
+}
+
 form.chat-box {
  float: right;
  max-width: 20em;
  padding: 5px;
  background-color: white;
  margin-top: -22.5em;
+}
+
+textarea {
+  padding: 0;
+  height: 1.5em;
+  width: 26em;
+  position: relative;
+
 }
 
 .chat-box .sendbutton {
