@@ -208,6 +208,10 @@ video {
     padding-bottom: 2em;
   }
 
+  ol {
+    font-size: 50%;
+  }
+
   form.chat-box {
    margin-right: 1em;
    margin-top: -1em;
@@ -233,6 +237,10 @@ video {
    margin-top: -10em;
    margin-right: -1em;
    max-width: 6em;
+  }
+
+  ol {
+    font-size: 75%;
   }
 
   input {
@@ -285,6 +293,10 @@ video {
   button.chat {
     height: 4em;
     width: 4em;
+  }
+
+  ol {
+    font-size: 100%;
   }
 
   form.chat-box {
