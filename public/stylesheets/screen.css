@@ -108,7 +108,15 @@ input {
   height: 1.5em;
   width: 24em;
   position: relative;
+}
 
+#chat-log .self {
+  background: #BFEFFF;
+  text-align: right;
+}
+
+ol {
+  padding-bottom: 1em;
 }
 
 .chat-box .sendbutton {
