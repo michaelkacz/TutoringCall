@@ -5,7 +5,7 @@
 const $self = {
   rtcConfig: null,
   audio: false,
-  constraints: { audio: false, video: true },
+  constraints: { audio: true, video: true },
   isPolite: false,
   isMakingoffer: false,
   isIgnoringOffer: false,
@@ -137,6 +137,7 @@ function registerRtcEvents(peer) {
   peer.connection.onnegotiationneeded = handleRtcNegotiation;
   peer.connection.onicecandidate = handleIceCandidate;
   peer.connection.ontrack = handleRtcTrack;
+  peer.connection.ondatachannel = dataChannel;
 }
 
 async function handleRtcNegotiation() {
@@ -150,22 +151,15 @@ async function handleRtcNegotiation() {
   $self.isMakingoffer = false;
 }
 
-//start to chat log JS
-/*
+//chat log JS
+
+function dataChannel({ channel }) {
+  const dc = channel;
+  console.log('Channel:', dc.label);
+}
+
 const chatbutton = document
   .querySelector('#chat-form');
-
-button.addEventListener('click', sendChat);
-
-function sendChat() {
-  sendchat.onclick = openForm();
-}
-
-function endChat() {
-  closebutton.onclick = exitForm();
-}
-
-*/
 
 //emits signal for candidate
 //sets up video stream to display when joined call

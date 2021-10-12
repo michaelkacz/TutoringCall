@@ -26,15 +26,15 @@
   <button class="selfvideo" type="button" id="selfvideo">Video Off</button>
   <button class="chat" type="button" id="chat">Open Chat</button>
 
-<div class="chat" id="chat-form">
- <form id="chatform" action="#null" hidden class="chat-box">
+<article class="chat" id="chat-form">
+ <form id="chatform" action="#null" class="chat-box">
    <h1>Tutor Chat</h1>
    <label for="msg">Message:</label>
    <textarea id="message" name="message" required > </textarea>
    <button class="sendbutton" type="submit" id="send-chat">Send</button>
    <button class="closebutton" type="button" id="close-chat">Close</button>
  </form>
-</div>
+</article>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://webrtchacks.github.io/adapter/adapter-latest.js"></script>
