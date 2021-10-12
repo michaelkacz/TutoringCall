@@ -41,6 +41,11 @@ registerScEvents();
 const button = document
   .querySelector('#join-call');
 
+  function audioStream(selector, stream) {
+    const audio = document.querySelector(selector);
+    audio.srcObject = stream;
+  }
+
   const mute = document.querySelector('#mutebutton');
     mutebutton.onclick = function (){
     if ($self.audio === false) {
@@ -119,11 +124,13 @@ function leaveCall() {
   $peer.connection.close();
   $peer.connection = new RTCPeerConnection($self.rtcConfig);
   displayStream('#peer', null);
+  audioStream('#peer', null);
   sc.close();
 }
 //
 function establishCallFeatures(peer) {
   peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
+  peer.connection.addTrack($self.stream.getTracks()[1], $self.stream);
 }
 
 function registerRtcEvents(peer) {
@@ -171,6 +178,7 @@ function handleIceCandidate({ candidate }) {
 //function for streaming peer on the RTC track
 function handleRtcTrack({ track, streams: [stream] }) {
   displayStream('#peer', stream);
+  audioStream('#peer', stream);
 }
 
 //Calling a reference to the function that gets executed
@@ -243,6 +251,7 @@ function handleScConnectedPeer() {
 function handleScDisconnectedPeer() {
   console.log('Peer disconnected event');
   displayStream('#peer', null);
+  audioStream('#peer', null);
   $peer.connection.close();
   $peer.connection = new RTCPeerConnection($self.rtcConfig);
   registerRtcEvents($peer);
