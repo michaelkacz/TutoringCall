@@ -330,3 +330,37 @@ video {
     width: 18em;
   }
 }
+
+@media screen and (min-width: 1200px) {
+
+  img.logo {
+    width: 10em;
+    height: 10em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  #peer {
+    width: 75%;
+  }
+
+  form.chat-box {
+   max-width: 20em;
+   margin-top: -14em;
+  }
+
+  input {
+    height: 1.5em;
+    width: 24em;
+  }
+}
