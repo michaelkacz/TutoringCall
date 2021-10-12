@@ -75,7 +75,6 @@ button.mutebutton {
   height: 5em;
   width: 5em;
   border-radius: 50%;
-
 }
 
 button.selfvideo {
@@ -217,11 +216,32 @@ video {
     border-radius: 50%;
   }
 
+  div {
+    padding-bottom: 2em;
+  }
+
   form.chat-box {
-   float: right;
-   max-width: 20em;
+   margin-right: 1em;
+   margin-top: -1em;
+   margin-bottom: 2em;
+   max-width: 6em;
    padding: 5px;
    background-color: white;
-   margin-top: -30em;
+  }
+
+  input {
+    padding: 0;
+    height: 1.5em;
+    width: 7em;
+    position: relative;
+  }
+
+  .chat-box .sendbutton {
+   color: white;
+   background-color: green;
+   margin-bottom: 1em;
+   padding: 1em 1.25em;
+   width: 75%;
+   height: 75%;
   }
 }
