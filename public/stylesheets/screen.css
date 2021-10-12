@@ -69,30 +69,29 @@ button.join {
 }
 
 button.mutebutton {
-  display: grid;
+  display: inline-block;
   margin: auto;
   height: 5em;
   width: 5em;
   border-radius: 50%;
-  align-content: center;
+
 }
 
 button.selfvideo {
-  display: grid;
+  display: inline-block;
   margin: auto;
   height: 5em;
   width: 5em;
   border-radius: 50%;
-  align-content: center;
+  margin-top: 1em;
 }
 
 button.chat {
-  display: grid;
+  display: inline-block;
   margin: auto;
   height: 5em;
   width: 5em;
   border-radius: 50%;
-  align-content: center;
 }
 
 form.chat-box {
