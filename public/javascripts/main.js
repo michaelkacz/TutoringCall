@@ -136,7 +136,7 @@ function establishCallFeatures(peer) {
   $peer.chatChannel =
   peer.connection.createDataChannel('chat', { negotiated: true, id: 50} );
   peer.chatChannel.onmessage = function({ data }) {
-    console.log('Message:', data);
+    appendMessage('peer', data);
   };
 }
 
@@ -180,12 +180,13 @@ const chatform = document
     const message = input.value;
 
     appendMessage('self', message);
+    $peer.chatChannel.send(message);
 
     console.log('Message:', message);
     input.value = '';
   }
 
-function addMessage(sender, message) {
+function appendMessage(sender, message) {
   const log = document.querySelector('#chat-log');
   const li = document.createElement('li');
   li.innerText = message;
