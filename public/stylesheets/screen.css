@@ -356,3 +356,36 @@ video {
    height: 100%;
   }
 }
+
+@media screen and (min-width: 1000px) {
+
+  button.mutebutton {
+    height: 5em;
+    width: 5em;
+  }
+
+  button.selfvideo {
+    height: 5em;
+    width: 5em;
+  }
+
+  button.chat {
+    height: 5em;
+    width: 5em;
+  }
+
+  form.chat-box {
+   max-width: 16em;
+   margin-top: -12em;
+  }
+
+  input {
+    height: 1.5em;
+    width: 18em;
+  }
+
+  .chat-box .sendbutton {
+   margin-bottom: 1em;
+   width: 100%;
+  }
+}
