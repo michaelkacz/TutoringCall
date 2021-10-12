@@ -26,6 +26,7 @@ async function requestUserMedia(constraints) {
   $self.stream = await navigator.mediaDevices
     .getUserMedia(constraints);
   displayStream('#self', $self.stream);
+  audioStream('#self', $self.stream);
 }
 
 //Socket server events and callbacks
