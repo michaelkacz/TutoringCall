@@ -129,10 +129,15 @@ function leaveCall() {
   audioStream('#peer', null);
   sc.close();
 }
-//
+
 function establishCallFeatures(peer) {
   peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
   peer.connection.addTrack($self.stream.getTracks()[1], $self.stream);
+  $peer.chatChannel =
+  peer.connection.createDataChannel('chat', { negotiated: true, id: 50} );
+  peer.chatChannel.onmessage = function({ data }) {
+    console.log('Message:', data);
+  };
 }
 
 function registerRtcEvents(peer) {
@@ -166,10 +171,27 @@ const chatform = document
   chatform.addEventListener('submit',
     chatScript);
 
+//prevent default behavior
+//grabs form reference and message input
   function chatScript(e) {
     e.preventDefault();
-    console.log('Chat form was submitted successfully!')
+    const form = e.target;
+    const input = form.querySelector('#message');
+    const message = input.value;
+
+    appendMessage('self', message);
+
+    console.log('Message:', message);
+    input.value = '';
   }
+
+function addMessage(sender, message) {
+  const log = document.querySelector('#chat-log');
+  const li = document.createElement('li');
+  li.innerText = message;
+  li.className = sender;
+  log.appendChild(li);
+}
 
 //emits signal for candidate
 //sets up video stream to display when joined call
