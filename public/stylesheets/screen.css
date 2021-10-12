@@ -277,7 +277,7 @@ video {
   }
 
   #peer {
-    width: 65%;
+    width: 50%;
   }
 
   button.mutebutton {
@@ -363,7 +363,7 @@ video {
   }
 
   #peer {
-    width: 75%;
+    width: 60%;
   }
 
   form.chat-box {
