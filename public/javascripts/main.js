@@ -99,21 +99,22 @@ const selfvideo = document.querySelector('#selfvideo');
           selfvideo.innerText = 'Video Off';
 
 }};
-/*
-chat.onclick = function (){
-const form = document.getElementsByTagName('form');
-  if (form.hasAttribute("hidden")) {
-       form.removeAttribute("hidden");
+
+const chatclose = document.querySelector('#chat');
+
+chatclose.onclick = function (){
+const form = document.querySelector('#chat');
+const chatdisplay = form.style.display;
+  if (chatdisplay === 'block') {
+       chatdisplay = 'none';
        console.log('Chat Closed!');
-       selfvideo.innerText = 'Close Chat';
+       chatclose.innerText = 'Open Chat';
   }
 else {
-        form.setAttribute("hidden")
+        chatdisplay = 'block';
         console.log('Chat Opened!!');
-        selfvideo.innerText = 'Open Chat';
-
+        chatclose.innerText = 'Close Chat';
 }};
-*/
 
 //join and leave call callbacks
 function joinCall() {
