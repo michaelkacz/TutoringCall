@@ -86,6 +86,7 @@ const selfvideo = document.querySelector('#selfvideo');
   selfvideo.onclick = function (){
     const vid = document.getElementById("self");
   if ($self.constraints.video === true) {
+          /*$self.stream.getTracks()[0].enabled = false;*/
          $self.constraints.video = false;
          vid.pause();
          console.log('Video turned off!');
@@ -98,7 +99,7 @@ const selfvideo = document.querySelector('#selfvideo');
           selfvideo.innerText = 'Video Off';
 
 }};
-
+/*
 chat.onclick = function (){
 const form = document.getElementsByTagName('form');
   if (form.hasAttribute("hidden")) {
@@ -112,6 +113,7 @@ else {
         selfvideo.innerText = 'Open Chat';
 
 }};
+*/
 
 //join and leave call callbacks
 function joinCall() {
@@ -158,8 +160,16 @@ function dataChannel({ channel }) {
   console.log('Channel:', dc.label);
 }
 
-const chatbutton = document
+const chatform = document
   .querySelector('#chat-form');
+
+  chatform.addEventListener('submit',
+    chatScript);
+
+  function chatScript(e) {
+    e.preventDefault();
+    console.log('Chat form was submitted successfully!')
+  }
 
 //emits signal for candidate
 //sets up video stream to display when joined call
