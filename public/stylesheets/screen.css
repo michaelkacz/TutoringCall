@@ -245,3 +245,31 @@ video {
    height: 75%;
   }
 }
+
+@media screen and (min-width: 500px) {
+
+  form.chat-box {
+   float: right;
+   margin-top: -10em;
+   margin-right: -1em;
+   max-width: 6em;
+   padding: 5px;
+   background-color: white;
+  }
+
+  input {
+    padding: 0;
+    height: 1.5em;
+    width: 7em;
+    position: relative;
+  }
+
+  .chat-box .sendbutton {
+   color: white;
+   background-color: green;
+   margin-bottom: 1em;
+   padding: 1em 1.25em;
+   width: 75%;
+   height: 75%;
+  }
+}
