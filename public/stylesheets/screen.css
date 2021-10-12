@@ -103,10 +103,10 @@ form.chat-box {
  margin-top: -22.5em;
 }
 
-textarea {
+input {
   padding: 0;
   height: 1.5em;
-  width: 26em;
+  width: 24em;
   position: relative;
 
 }
