@@ -4,7 +4,6 @@
 //starts by setting audio to off and video to on
 const $self = {
   rtcConfig: null,
-  audio: false,
   constraints: { audio: true, video: true },
   isPolite: false,
   isMakingoffer: false,
@@ -85,16 +84,13 @@ const selfvideo = document.querySelector('#selfvideo');
 
   selfvideo.onclick = function (){
     const vid = document.getElementById("self");
-  if ($self.constraints.video === true) {
-          /*$self.stream.getTracks()[0].enabled = false;*/
-         $self.constraints.video = false;
-         vid.pause();
+  if ($self.stream.getTracks()[1].enabled === true) {
+         $self.stream.getTracks()[1].enabled = false;
          console.log('Video turned off!');
          selfvideo.innerText = 'Video On';
     }
-  else if ($self.constraints.video === false) {
-          $self.constraints.video = true;
-          vid.play();
+  else if ($self.stream.getTracks()[1].enabled === false) {
+          $self.stream.getTracks()[1].enabled = true;
           console.log('Video turned On!');
           selfvideo.innerText = 'Video Off';
 
@@ -251,6 +247,9 @@ async function handleScSignal({ description, candidate }) {
 
     //remote answer pending is true if description type is 'answer'
     $self.isSettingRemoteAnswerPending = description.type === 'answer';
+    console.log('Incoming description:',
+      $peer.connection.signalingState);
+
     await $peer.connection.setRemoteDescription(description);
 
     $self.isSettingRemoteAnswerPending = false;
