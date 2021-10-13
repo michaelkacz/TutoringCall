@@ -151,12 +151,20 @@ function registerRtcEvents(peer) {
 async function handleRtcNegotiation() {
   console.log('RTC negotiation needed');
   $self.isMakingoffer = true;
+  try {
   await $peer.connection.setLocalDescription();
+} catch(e) {
+  //manually create offer and pass peer connection in to SLD
+  const peeroffer = await $peer.connection.createOffer();
+  await $peer.connection.setLocalDescription(peeroffer);
+} finally {
   //emit SDP signal
+  //local description being sent to remote peer
   sc.emit('signal', { description:
     $peer.connection.localDescription })
   //As soon as offer is sent, it will be set back to false
   $self.isMakingoffer = false;
+ }
 }
 
 //chat log JS
@@ -250,10 +258,19 @@ async function handleScSignal({ description, candidate }) {
     //if description type is an offer an answer must be set
     //re-run setLocalDescription and it will generate an answer
     if (description.type === 'offer') {
+      //add try and catch block for peer connection
+      try {
       await $peer.connection.setLocalDescription();
+    } catch(e) {
+      //manually create an answer & pass it to SLD
+        const peeranswer = await $peer.connection.createAnswer();
+        await $peer.connection.setLocalDescription(peeranswer);
+    } finally {
+      //send LD to remote peer
       sc.emit('signal',
         { description:
           $peer.connection.localDescription });
+      }
     }
   } else if (candidate) {
     console.log('Received ICE candidate:', candidate);
