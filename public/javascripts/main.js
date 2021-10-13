@@ -47,15 +47,15 @@ const button = document
 
   const mute = document.querySelector('#mutebutton');
     mutebutton.onclick = function (){
-    if ($self.audio === false) {
-           $self.audio = true;
-           console.log('Audio turned On!');
-           mutebutton.innerText = 'Mute';
+    if ($self.stream.getTracks()[0].enabled === true) {
+           $self.stream.getTracks()[0].enabled = false;
+           console.log('Audio turned Off!');
+           mutebutton.innerText = 'Unmute';
       }
-    else {
-            $self.audio = false;
-            console.log('Audio turned Off!');
-            mutebutton.innerText = 'Unmute';
+      else if ($self.stream.getTracks()[0].enabled === false) {
+            $self.stream.getTracks()[0].enabled = true;
+            console.log('Audio turned On!');
+            mutebutton.innerText = 'Mute';
   }};
 
 //Opens socket.io connection when 'join-call' button is clicked
