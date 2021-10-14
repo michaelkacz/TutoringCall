@@ -97,33 +97,31 @@ const selfvideo = document.querySelector('#selfvideo');
 
 }};
 
-//const chatclose = document.querySelector('#chat');
+    chat.onclick = function (){
+    const form = document.getElementById('chat-form');
+    //const chatdisplay = form.style.display;
+      if (form.style.display === "block") {
+           form.style.display = "none";
+           console.log('Chat Closed!');
+           chat.innerText = 'Open Chat';
+      }
+    else {
+            form.style.display = "block";
+            console.log('Chat Opened!!');
+            chat.innerText = 'Close Chat';
+    }};
 
-chat.onclick = function (){
-const form = document.getElementById('chat-form');
-//const chatdisplay = form.style.display;
-  if (form.style.display === "block") {
-       form.style.display = "none";
-       console.log('Chat Closed!');
-       chat.innerText = 'Open Chat';
-  }
-else {
-        form.style.display = "block";
-        console.log('Chat Opened!!');
-        chat.innerText = 'Close Chat';
-}};
-
-//join and leave call callbacks
-function joinCall() {
-  sc.open();
-  //registers events after connecting to server
-  registerRtcEvents($peer);
-  establishCallFeatures($peer);
-}
-function leaveCall() {
-  restart($peer);
-  sc.close();
-}
+    //join and leave call callbacks
+    function joinCall() {
+      sc.open();
+      //registers events after connecting to server
+      registerRtcEvents($peer);
+      establishCallFeatures($peer);
+    }
+    function leaveCall() {
+      restart($peer);
+      sc.close();
+    }
 
 function restart(peer) {
   peer.connection.close();
