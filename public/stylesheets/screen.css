@@ -38,17 +38,23 @@ h2 {
   text-align: center;
 }
 
+article.videos {
+  position: relative;
+}
+
 #self {
+  position: absolute;
   width: 20%;
-  bottom: 10px;
-  right: 10px;
+  top: 136%;
+  margin-bottom: 3em;
+  right: 350px;
   border: 0.25em solid white;
-  margin: auto;
 }
 
 #peer {
   display: block;
   max-width: 100%;
+  max-height: 100%;
   border: 0.25em solid black;
   margin: auto;
   margin-top: 1em;
@@ -367,12 +373,12 @@ video {
   }
 
   form.chat-box {
-   max-width: 20em;
-   margin-top: -14em;
+   max-width: 18em;
+   margin-top: -30em;
   }
 
   input {
     height: 1.5em;
-    width: 24em;
+    width: 21em;
   }
 }
