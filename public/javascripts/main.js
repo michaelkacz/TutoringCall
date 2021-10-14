@@ -45,15 +45,15 @@ const button = document
     audio.srcObject = stream;
   }
 
-  const mute = document.querySelector('#mutebutton');
+  const mute = document.querySelector('#audioStream');
     mutebutton.onclick = function (){
-    if ($self.stream.getTracks()[0].enabled === true) {
-           $self.stream.getTracks()[0].enabled = false;
+    if ($self.stream.getAudioTracks()[0].enabled === true) {
+           $self.stream.getAudioTracks()[0].enabled = false;
            console.log('Audio turned Off!');
            mutebutton.innerText = 'Unmute';
       }
-      else if ($self.stream.getTracks()[0].enabled === false) {
-            $self.stream.getTracks()[0].enabled = true;
+      else {
+            $self.stream.getAudioTracks()[0].enabled = true;
             console.log('Audio turned On!');
             mutebutton.innerText = 'Mute';
   }};
@@ -89,27 +89,27 @@ const selfvideo = document.querySelector('#selfvideo');
          console.log('Video turned off!');
          selfvideo.innerText = 'Video On';
     }
-  else if ($self.stream.getTracks()[1].enabled === false) {
+  else {
           $self.stream.getTracks()[1].enabled = true;
           console.log('Video turned On!');
           selfvideo.innerText = 'Video Off';
 
 }};
 
-const chatclose = document.querySelector('#chat');
+//const chatclose = document.querySelector('#chat');
 
-chatclose.onclick = function (){
-const form = document.querySelector('#chat');
-const chatdisplay = form.style.display;
-  if (chatdisplay === 'block') {
-       chatdisplay = 'none';
+chat.onclick = function (){
+const form = document.getElementById('chat-form');
+//const chatdisplay = form.style.display;
+  if (form.style.display === "block") {
+       form.style.display = "none";
        console.log('Chat Closed!');
-       chatclose.innerText = 'Open Chat';
+       chat.innerText = 'Open Chat';
   }
 else {
-        chatdisplay = 'block';
+        form.style.display = "block";
         console.log('Chat Opened!!');
-        chatclose.innerText = 'Close Chat';
+        chat.innerText = 'Close Chat';
 }};
 
 //join and leave call callbacks
