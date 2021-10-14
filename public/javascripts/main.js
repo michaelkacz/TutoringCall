@@ -120,11 +120,15 @@ function joinCall() {
   establishCallFeatures($peer);
 }
 function leaveCall() {
-  $peer.connection.close();
-  $peer.connection = new RTCPeerConnection($self.rtcConfig);
+  restart($peer);
+  sc.close();
+}
+
+function restart(peer) {
+  peer.connection.close();
+  peer.connection = new RTCPeerConnection($self.rtcConfig);
   displayStream('#peer', null);
   audioStream('#peer', null);
-  sc.close();
 }
 
 function establishCallFeatures(peer) {
