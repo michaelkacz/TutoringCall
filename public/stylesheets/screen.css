@@ -38,6 +38,21 @@ h2 {
   text-align: center;
 }
 
+#self {
+  width: 20%;
+  border: 0.25em solid white;
+  margin: auto;
+}
+
+#peer {
+  display: block;
+  max-width: 100%;
+  border: 0.25em solid black;
+  margin: auto;
+  margin-top: 1em;
+}
+
+/*
 article.videos {
   position: relative;
 }
@@ -59,6 +74,7 @@ article.videos {
   margin: auto;
   margin-top: 1em;
 }
+*/
 
 button.leave {
   background-color: #000000;
@@ -133,6 +149,19 @@ input {
 #chat-log .self {
   background: #BFEFFF;
   text-align: right;
+  border: 0.25em;
+  padding: 0.5em;
+  border-radius: 15px;
+}
+
+#chat-log .peer {
+  background: #D3D3D3;
+  background-size: contain;
+  text-align: left;
+  border: 0.25em;
+  padding: 0.5em;
+  border-radius: 15px;
+
 }
 
 ol {
@@ -182,11 +211,11 @@ video {
   }
 
   #self {
-    width: 30%;
+    width: 20%;
   }
 
   #peer {
-    width: 75%;
+    width: 60%;
   }
 
   button.join {
@@ -279,11 +308,11 @@ video {
   }
 
   #self {
-    width: 20%;
+    width: 15%;
   }
 
   #peer {
-    width: 50%;
+    width: 45%;
   }
 
   button.mutebutton {
@@ -368,17 +397,21 @@ video {
     font-size: 1em;
   }
 
+  #self {
+    width: 15%;
+  }
+
   #peer {
-    width: 60%;
+    width: 50%;
   }
 
   form.chat-box {
-   max-width: 18em;
+   max-width: 16em;
    margin-top: -30em;
   }
 
   input {
     height: 1.5em;
-    width: 21em;
+    width: 19em;
   }
 }
