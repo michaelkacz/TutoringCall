@@ -298,10 +298,7 @@ function handleScConnectedPeer() {
 
 function handleScDisconnectedPeer() {
   console.log('Peer disconnected event');
-  displayStream('#peer', null);
-  audioStream('#peer', null);
-  $peer.connection.close();
-  $peer.connection = new RTCPeerConnection($self.rtcConfig);
+  restart($peer);
   registerRtcEvents($peer);
   establishCallFeatures($peer);
 }
