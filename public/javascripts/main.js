@@ -45,17 +45,18 @@ const button = document
     audio.srcObject = stream;
   }
 
-  const mute = document.querySelector('#audioStream');
-    mutebutton.onclick = function (){
-    if ($self.stream.getAudioTracks()[0].enabled === true) {
-           $self.stream.getAudioTracks()[0].enabled = false;
+  const mute = document.querySelector('#mutebutton');
+    mute.onclick = function (){
+      const sound = $self.stream.getAudioTracks()[0];
+    if (sound.enabled === true) {
+           sound.enabled = false;
            console.log('Audio turned Off!');
-           mutebutton.innerText = 'Unmute';
+           mute.innerText = 'Unmute';
       }
       else {
-            $self.stream.getAudioTracks()[0].enabled = true;
+            sound.enabled = true;
             console.log('Audio turned On!');
-            mutebutton.innerText = 'Mute';
+            mute.innerText = 'Mute';
   }};
 
 //Opens socket.io connection when 'join-call' button is clicked
