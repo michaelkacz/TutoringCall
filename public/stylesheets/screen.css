@@ -52,30 +52,6 @@ h2 {
   margin-top: 1em;
 }
 
-/*
-article.videos {
-  position: relative;
-}
-
-#self {
-  position: absolute;
-  width: 20%;
-  top: 136%;
-  margin-bottom: 3em;
-  right: 350px;
-  border: 0.25em solid white;
-}
-
-#peer {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  border: 0.25em solid black;
-  margin: auto;
-  margin-top: 1em;
-}
-*/
-
 button.leave {
   background-color: #000000;
   color: #FFFFFF;

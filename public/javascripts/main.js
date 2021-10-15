@@ -45,6 +45,7 @@ const button = document
     audio.srcObject = stream;
   }
 
+//function to mute and unmute audio
   const mute = document.querySelector('#mutebutton');
     mute.onclick = function (){
       const sound = $self.stream.getAudioTracks()[0];
@@ -81,6 +82,7 @@ function handleButton(e) {
   }
 }
 
+//function to turn video on and off
 const selfvideo = document.querySelector('#selfvideo');
 
   selfvideo.onclick = function (){
@@ -97,9 +99,9 @@ const selfvideo = document.querySelector('#selfvideo');
 
 }};
 
+    //function to close and open chat
     chat.onclick = function (){
     const form = document.getElementById('chat-form');
-    //const chatdisplay = form.style.display;
       if (form.style.display === "block") {
            form.style.display = "none";
            console.log('Chat Closed!');
@@ -166,8 +168,6 @@ async function handleRtcNegotiation() {
  }
 }
 
-//chat log JS
-
 function dataChannel({ channel }) {
   const dc = channel;
   console.log('Channel:', dc.label);
@@ -204,7 +204,6 @@ function appendMessage(sender, message) {
 
 //emits signal for candidate
 //sets up video stream to display when joined call
-
 function handleIceCandidate({ candidate }) {
   sc.emit('signal', { candidate:
     candidate })
